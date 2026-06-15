@@ -105,8 +105,13 @@ plt.ylabel("Dimension 2")
 plt.colorbar(label="Digit Label")
 plt.show()
 # Gợi ý bài mở rộng: Vẽ Boxplot để tìm ngoại lai cho Iris Dataset
+from sklearn.datasets import load_iris
+iris = load_iris()
+df_iris = pd.DataFrame(iris.data, columns=iris.feature_names)
+df_iris["species"] = iris.target
+
 plt.figure(figsize=(10, 6))
-sns.boxplot(data=df.drop(columns="species"), palette="Pastel1")
+sns.boxplot(data=df_iris.drop(columns="species"), palette="Pastel1")
 plt.title("Boxplot - Phát hiện dữ liệu ngoại lai (Outliers) trong Iris Dataset")
 plt.ylabel("Giá trị (cm)")
 plt.show()
